@@ -55,6 +55,8 @@ while(cuotas > 24 || isNaN(cuotas)){
 let precioFinal = (total*1.12)/cuotas
 
 alert("En total serían "+ cuotas+ " cuotas de $" + Math.round(precioFinal));
+
+alert('¡Hasta la próxima!')
 }
 
 
@@ -90,7 +92,6 @@ if (agregarProds === 'si'){
             terminar();
             agregarProds = false;
             if (!agregarProds){
-                alert('Hasta la próxima!')
             }
             } else if(agregarProds === 'no'){
                 terminar();
@@ -102,6 +103,38 @@ if (agregarProds === 'si'){
             terminar();
         }else {
             elegirBien();
+            if(agregarProds === 'si'){
+                let eleccion = parseInt(prompt(menu))
+                
+                 elegir(eleccion);
+                        
+                
+                agregarProds = prompt('Se te ofrece algo más?').toLowerCase()
+                
+                    if (agregarProds === 'si'){
+                        let eleccion = parseInt(prompt(menu))
+                
+                        elegir(eleccion);
+                        terminar();
+                        agregarProds = false;
+                        if (!agregarProds){
+                    }
+                    } else if(agregarProds === 'no'){
+                        terminar();
+                    } else {
+                        elegirBien();
+                        if (agregarProds === 'si'){
+                            let eleccion = parseInt(prompt(menu))
+                    
+                            elegir(eleccion);
+                        } else if(agregarProds === 'no'){
+                            terminar();
+                        }
+                    }
+                
+                }else if(agregarProds === 'no') {
+                            terminar();
+                }
         }
     }
 } else if(agregarProds === 'no'){
@@ -126,7 +159,6 @@ terminar();
                 terminar();
                 agregarProds = false;
                 if (!agregarProds){
-                alert('¡Hasta la próxima!')
             }
             } else if(agregarProds === 'no'){
                 terminar();
