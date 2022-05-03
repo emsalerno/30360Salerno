@@ -1,15 +1,24 @@
-let gpu = {precio: 175000};
-let cpu = {precio: 57000};
-let memorias = {precio: 36000};
 let total = 0;
+
+const productos = [
+    {nombre: "Placa de video RTX 3070", precio: 175000},
+    {nombre: "Procesador Ryzen 5600", precio: 57000},
+    {nombre: "Kit x2 memorias RAM Corsair 3600MHz", precio: 36000},
+    {nombre: "Motherboard X570 MSI", precio:40000}]
+
+productos.push({nombre:"Fuente de poder 750W 80Plus GOLD", precio:28000})
+
 let menu = "Qué deseas comprar?\n"+
-"1 - Una placa de video RTX 2070\n"+
-"2 - Un procesador Ryzen 5600\n"+
-"3 - Un kit de 2 memorias RAM Corsair de 3600MHz"
+"1 - "+productos[0].nombre+"\n"+
+"2 - "+productos[1].nombre+"\n"+
+"3 - "+productos[2].nombre+"\n"+
+"4 - "+ productos[3].nombre+"\n"+
+"5 - "+ productos[4].nombre;
+
 
 
 function opcionCorrecta(eleccion){
-    while(eleccion < 1 || eleccion > 3 || isNaN(eleccion)){
+    while(eleccion < 1 || eleccion > 5 || isNaN(eleccion)){
         eleccion = parseInt(prompt('Ingresá una opción correcta \n' + menu));
     }
 }
@@ -17,16 +26,24 @@ function opcionCorrecta(eleccion){
 function elegir(eleccion){
     switch(eleccion){
         case 1:
-             alert("El precio de la placa de video es $"+ gpu.precio);
-             total = total + gpu.precio;
+             alert("El precio de la placa de video es $"+ productos[0].precio);
+             total = total + productos[0].precio;
             break;
         case 2:
-            alert("El precio del procesador es $"+cpu.precio);
-            total = total + cpu.precio;
+            alert("El precio del procesador es $"+productos[1].precio);
+            total = total + productos[1].precio;
             break;
         case 3:
-            alert("El precio de las memorias es $"+memorias.precio);
-            total = total +memorias.precio;
+            alert("El precio de las memorias es $"+productos[2].precio);
+            total = total + productos[2].precio;
+            break;
+        case 4:
+            alert("El precio del motherboard es $"+productos[3].precio);
+            total = total + productos[3].precio;
+            break;
+        case 5:
+            alert("El precio de la fuente de poder es $"+productos[4].precio);
+            total = total + productos[4].precio;
             break;
         default:
             opcionCorrecta();
