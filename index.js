@@ -1,18 +1,19 @@
 let total = 0;
 
 class Producto {
-    constructor(nombre, precio){
+    constructor(id,nombre, precio){
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
     }
 }
 const productos = []
 
-productos.push(new Producto('Placa de video RTX 3070',175000));
-productos.push(new Producto('Procesador Ryzen 5600', 57000));
-productos.push(new Producto('Kit x2 memorias Ram Corsair 3600MHz',36000));
-productos.push(new Producto('Motherboard X570 MSI', 40000));
-productos.push(new Producto('Fuente de poder 750W 80Plus GOLD',28000));
+productos.push(new Producto(1,'Placa de video RTX 3070',175000));
+productos.push(new Producto(2,'Procesador Ryzen 5600', 57000));
+productos.push(new Producto(3,'Kit x2 memorias Ram Corsair 3600MHz',36000));
+productos.push(new Producto(4,'Motherboard X570 MSI', 40000));
+productos.push(new Producto(5,'Fuente de poder 750W 80Plus GOLD',28000));
 
 
 let menu = "Qué deseas comprar?\n"+
@@ -35,6 +36,7 @@ function displayPrecio(eleccion){
     total = total + productos[eleccion-1].precio;
 }
 
+
 function elegir(eleccion){
     switch(eleccion){
         case 1:
@@ -55,7 +57,6 @@ function elegir(eleccion){
         default:
             opcionCorrecta();
     }
-    return eleccion,total;
 }
 
 function elegirBien(){
@@ -64,7 +65,6 @@ function elegirBien(){
     
         if(agregarProds === 'si' || agregarProds === 'no'){break;}
     }
-    return agregarProds;
 }
 
 function terminar(){
@@ -83,6 +83,20 @@ alert("En total serían "+ cuotas+ " cuotas de $" + Math.round(precioFinal));
 alert('¡Hasta la próxima!')
 }
 
+let cardDeck = document.getElementById("card-deck")
+
+  for (const producto of productos) {
+    let contenedor = document.createElement("div");
+    contenedor.className = "card bg-dark mb-3 text-center"
+    contenedor.innerHTML = `
+                    <div class="card-header">
+                        ${producto.nombre}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action list-group-item-dark">ID: ${producto.id}</li>
+                        <li class="list-group-item list-group-item-action list-group-item-dark">Precio: $${producto.precio}</li>
+                    </ul>`;
+    cardDeck.append(contenedor);}
 
 alert('Bienvenido!');
 
@@ -142,6 +156,7 @@ if (agregarProds === 'si'){
                         terminar();
                         agregarProds = false;
                         if (!agregarProds){
+                            terminar();
                     }
                     } else if(agregarProds === 'no'){
                         terminar();
@@ -183,6 +198,7 @@ terminar();
                 terminar();
                 agregarProds = false;
                 if (!agregarProds){
+                    terminar();
             }
             } else if(agregarProds === 'no'){
                 terminar();
@@ -201,3 +217,12 @@ terminar();
                     terminar();
         }
 }
+
+let totalMostrado = document.createElement("div");
+totalMostrado.innerHTML = `
+<div class="card-header">
+                        Total
+                    </div>
+<li class="list-group-item list-group-item-action list-group-item-dark">$${total}</li>
+`
+document.body.append(totalMostrado)
