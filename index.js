@@ -24,6 +24,26 @@ let menu = "Qué deseas comprar?\n"+
 "5 - "+ productos[4].nombre;
 
 
+let cardDeck = document.getElementById("card-deck")
+
+  for (const producto of productos) {
+    let contenedor = document.createElement("div");
+    contenedor.className = "card bg-dark mb-3 text-center"
+    contenedor.innerHTML = `
+                    <div class="card-header">
+                        ${producto.nombre}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item list-group-item-action list-group-item-dark">ID: ${producto.id}</li>
+                        <li class="list-group-item list-group-item-action list-group-item-dark">Precio: $${producto.precio}</li>
+                    </ul>`;
+    cardDeck.append(contenedor);}
+
+    
+let boton = document.getElementById('btnPrincipal');
+boton.addEventListener("click",comenzar);
+
+    function comenzar(){
 
 function opcionCorrecta(eleccion){
     while(eleccion < 1 || eleccion > 5 || isNaN(eleccion)){
@@ -83,25 +103,16 @@ alert("En total serían "+ cuotas+ " cuotas de $" + Math.round(precioFinal));
 alert('¡Hasta la próxima!')
 }
 
-let cardDeck = document.getElementById("card-deck")
 
-  for (const producto of productos) {
-    let contenedor = document.createElement("div");
-    contenedor.className = "card bg-dark mb-3 text-center"
-    contenedor.innerHTML = `
-                    <div class="card-header">
-                        ${producto.nombre}
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item list-group-item-action list-group-item-dark">ID: ${producto.id}</li>
-                        <li class="list-group-item list-group-item-action list-group-item-dark">Precio: $${producto.precio}</li>
-                    </ul>`;
-    cardDeck.append(contenedor);}
 
 alert('Bienvenido!');
 
-let eleccion = parseInt(prompt(menu));
 
+
+
+
+
+let eleccion = parseInt(prompt(menu));
 
 elegir(eleccion);
 
@@ -217,12 +228,14 @@ terminar();
                     terminar();
         }
 }
-
 let totalMostrado = document.createElement("div");
 totalMostrado.innerHTML = `
 <div class="card-header">
                         Total
                     </div>
-<li class="list-group-item list-group-item-action list-group-item-dark">$${total}</li>
+<li class="list-group-item list-group-item-action list-group-item-dark">Total:$${total}</li>
 `
 document.body.append(totalMostrado)
+
+    }
+
